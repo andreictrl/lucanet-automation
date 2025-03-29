@@ -1,0 +1,27 @@
+{
+  "name": "lucanet-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreictrl/lucanet-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreictrl/lucanet-automation/issues"
+  },
+  "homepage": "https://github.com/andreictrl/lucanet-automation#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "typescript": "^5.8.2"
+  }
+}
