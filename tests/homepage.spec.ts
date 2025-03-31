@@ -1,6 +1,10 @@
 import { test, expect } from "@playwright/test";
 import { HomePage } from "../pages/homepage";
 import { TEXT, SELECTORS } from "../utils/constants";
+import { RequestDemoPage } from '../pages/requestdemo';
+
+// Mock form submission route
+const FORM_ENDPOINT = '**/request-demo**';
 
 test.describe("Lucanet Homepage Tests", () => {
   test.beforeEach(async ({ page }) => {
@@ -32,5 +36,22 @@ test.describe("Lucanet Homepage Tests", () => {
     await page.goto("/de/");
     await expect(home.footer.filter({ hasText: "Datenschutz" })).toBeVisible();
     await expect(home.footer.filter({ hasText: "Impressum" })).toBeVisible();
+  });
+
+  test('Mocked form submission for Request Demo', async ({ page }) => {
+    await page.route(FORM_ENDPOINT, route =>
+      route.fulfill({ status: 200, body: JSON.stringify({ success: true }) })
+    );
+  
+    const form = new RequestDemoPage(page);
+  
+    await page.goto('/');
+    await form.open();
+  
+    await form.fillAndSubmitForm('neteduandrei14@gmail.com');
+    await form.assertNoErrorMessages();
+
+    await form.assertOnlyEmailErrorAppears();
+
   });
 });
