@@ -1,4 +1,4 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
@@ -14,5 +14,19 @@ export default defineConfig({
     trace: 'on-first-retry',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure'
-  }
+  },
+  projects: [
+    {
+      name: 'Chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'Firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'WebKit',
+      use: { ...devices['Desktop Safari'] },
+    }
+  ]
 });

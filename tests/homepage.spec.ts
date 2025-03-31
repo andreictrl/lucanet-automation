@@ -14,7 +14,7 @@ test.describe("Lucanet Homepage Tests", () => {
   test("Hero heading is visible and correct", async ({ page }) => {
     const home = new HomePage(page);
     await expect(home.heroHeading).toBeVisible();
-    await expect(home.heroHeading).toHaveText(TEXT.heroHeading);
+    await expect(home.heroHeading).toHaveText('Empowering modern finance leaders to lead with ease');
   });
 
   test("Navigation menu is visible", async ({ page }) => {
